@@ -9,10 +9,11 @@
   "author": "Pieter Desseyn",
   "license": "ISC",
   "dependencies": {
+    "@angular/cli": "^6.1.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-     "module": "0.0.x",
+    "module": "0.0.x",
     "mongoose": "^5.2.7"
   }
 }
