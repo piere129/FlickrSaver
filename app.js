@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
+var config = require('./database/database');
 
 var app = express();
 
@@ -16,16 +17,18 @@ app.use(bodyparser.urlencoded({
   app.use(bodyparser.json())
 
 
-const route = require('./routes/route');
+const apiImage = require('./routes/images');
+const users = require('./routes/users');
 
 //routing with /api uses routes defined in route.js
-app.use('/api', route);
+app.use('/api', apiImage);
+app.use('/users', users)
 
 //port no
 const port = 3000;
 
 //connection to mongodb
-mongoose.connect('mongodb://localhost:27017/webapps-database', {useNewUrlParser:true});
+mongoose.connect(config.database, {useNewUrlParser:true});
 mongoose.connection.on('connected', ()=>{
     console.log('Connected to database mongodb @ 27017');
 })

@@ -17,7 +17,6 @@ export class ImagesComponent implements OnInit {
 
   // dependency injection
   constructor(private imageService: ImageService) {
-
   }
 
   deleteImage(id: any) {
