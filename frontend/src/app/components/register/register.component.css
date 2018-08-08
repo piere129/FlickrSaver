@@ -1,0 +1,18 @@
+
+.form-container {
+  margin-right: 28%;
+  margin-left: 28%;
+  margin-top: 5%;
+  background-color: #4E5D6C;
+  align-content: center;
+  padding: 50px;
+}
+
+@media (min-width:0px) and ( max-width: 1080px) {
+  .form-container {
+    margin-right: 5%;
+    margin-left: 5%;
+    padding: 20px;
+  }
+}
+
