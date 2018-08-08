@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
-var config = require('./database/database');
+var config = require('./config/database');
+var passport = require('passport');
 
 var app = express();
 
@@ -16,7 +17,7 @@ app.use(bodyparser.urlencoded({
 
   app.use(bodyparser.json())
 
-
+//routing
 const apiImage = require('./routes/images');
 const users = require('./routes/users');
 
@@ -39,9 +40,14 @@ mongoose.connection.on('error', (err)=>{
     }
 })
 
-//adding middleware
+//adding middleware cors
 app.use(cors());
 
+//adding middleware passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 //initialise static files in public
 app.use(express.static(path.join(__dirname,'public')));
