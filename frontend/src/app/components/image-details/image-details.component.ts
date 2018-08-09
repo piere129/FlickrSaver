@@ -1,6 +1,6 @@
 import { take } from 'rxjs/internal/operators';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageService } from '../../services/image/image.service';
 
 @Component({
@@ -10,14 +10,21 @@ import { ImageService } from '../../services/image/image.service';
 })
 export class ImageDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private imageService: ImageService) { }
+  constructor(private route: ActivatedRoute, private imageService: ImageService, private router: Router) { }
 
   private image;
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-        console.log(id);
+    console.log(id);
     this.imageService.getImage(id).subscribe(image => this.image = image);
+  }
+
+  onDelete() {
+    this.imageService.deleteImage(this.image._id).subscribe(data => {
+      this.imageService.getImages().subscribe(images => this.router.navigate(['/collection']));
+    }
+    );
   }
 
 }

@@ -17,18 +17,6 @@ export class CollectionComponent implements OnInit {
   url: string;
 
   constructor(private imageService: ImageService, private router: Router) { }
-  deleteImage(id: any) {
-    const images = this.images;
-    this.imageService.deleteImage(id).subscribe(data => {
-      if (data.n === 1) {
-        for (let i = 0; i < images.length; i++) {
-          if (images[i]._id === id) {
-            images.splice(i, 1);
-          }
-        }
-      }
-    });
-  }
 
   addImage() {
     const newImage = {
