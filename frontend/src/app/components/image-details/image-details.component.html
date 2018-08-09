@@ -1,6 +1,7 @@
 <div class="container">
-  <h2> {{image.title}}</h2>
-  <p> {{image.description}}</p>
-  <img src={{image.url}}/>
+  <h2 *ngIf="image?.title"> {{image.title}}</h2>
+  <p *ngIf="image?.description"> {{image.description}}</p>
+  <img src={{image?.url}}/>
+  <br> <br>
   <button class="btn btn-danger" (click)="onDelete()">delete</button>
 </div>

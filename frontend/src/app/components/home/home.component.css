@@ -1,8 +1,14 @@
-a { margin: 10px;}
+a {
+  margin: 10px;
+}
 
-.jumbotron {margin-top: 10%;}
+.jumbotron {
+  margin-top: 7%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
 
 .buttons-align-center {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }
