@@ -20,16 +20,13 @@
 <hr/>
 <div class="container">
   <div *ngFor="let image of images" class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       {{image.title}}
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       {{image.description}}
     </div>
-    <div class="col-md-3">
-      {{image.url}}
-    </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <input type="button" (click)="deleteImage(image._id)" value="Delete" class="btn btn-danger">
       <br> <br>
 

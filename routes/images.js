@@ -4,13 +4,23 @@ const passport = require('passport');
 
 const Image = require('../models/images');
 
+
 //retrieving data
-router.get('/images',/*passport.authenticate('jwt',{session:false}),*/ (req,res,next) => {
+router.get('/images', (req,res,next) => {
 
     Image.find( (err, images) => {
         res.json(images);
     })
 
+});
+
+router.get('/image/:id', (req,res,next) => {
+
+    Image.findOne({
+        _id: req.params.id,
+    }, (err, images) => {
+        res.json(images);
+    });
 });
 
 //add image

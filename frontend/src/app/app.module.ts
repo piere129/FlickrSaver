@@ -16,16 +16,19 @@ import { RegisterComponent } from './components/register/register.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ImageDetailsComponent } from './components/image-details/image-details.component';
 
 
 
 const appRoutes: Routes = [
+  {path: '*', component: LoginComponent},
  {path: '', component: HomeComponent},
  {path: 'register', component: RegisterComponent},
  {path: 'login', component: LoginComponent},
  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
- {path: 'collection', component: CollectionComponent,  canActivate: [AuthGuard]},
- {path: 'dashboard', component: DashboardComponent,  canActivate: [AuthGuard]}
+ {path: 'collection', component: CollectionComponent/*, canActivate: [AuthGuard]*/},
+ {path: 'collection/:id', component: ImageDetailsComponent/*, canActivate: [AuthGuard]*/},
+ {path: 'dashboard', component: ImagesComponent,  canActivate: [AuthGuard]}
 
 
 ];
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     CollectionComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ImageDetailsComponent
   ],
   imports: [
     BrowserModule,

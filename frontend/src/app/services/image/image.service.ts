@@ -16,6 +16,10 @@ export class ImageService {
     return this.http.get('http://localhost:3000/api/images').pipe(map(res => res.json()));
   }
 
+  getImage(id) {
+    return this.http.get('http://localhost:3000/api/image/' + id).pipe(map(res => res.json()));
+  }
+
   // adding an image
   addImage(newImage) {
     const headers = new Headers();

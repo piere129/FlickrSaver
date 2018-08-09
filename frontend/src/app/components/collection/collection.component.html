@@ -1,3 +1,11 @@
-<p>
-  My Images works!
-</p>
+<div>
+  <div class="projects">
+    <a *ngFor="let image of images" (click) = "onSelect(image)" >
+      <article class="project-wrapper">
+        
+        <img src={{image.url}}/>
+
+      </article>
+    </a>
+  </div>
+</div>

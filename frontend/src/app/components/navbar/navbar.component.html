@@ -8,13 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/']">Home </a>
+        <a class="nav-link" *ngIf="!isLoggedIn()" [routerLink]="['/']">Home </a>
       </li>
       <li class="nav-item"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
           <a class="nav-link" [routerLink]="['/dashboard']"*ngIf="isLoggedIn()">Dashboard</a>
         </li>
       <li class="nav-item"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/collection']"*ngIf="isLoggedIn()">My Images</a>
+        <a class="nav-link" [routerLink]="['/collection']">My Images</a>
       </li>
       <li class="nav-item"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" [routerLink]="['/profile']" *ngIf="isLoggedIn()">Profile</a>
