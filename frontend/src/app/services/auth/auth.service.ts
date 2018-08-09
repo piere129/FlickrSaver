@@ -37,10 +37,17 @@ export class AuthService {
     localStorage.clear();
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     if (this.authToken != null) {
       return true;
     }
     return false;
+  }
+
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+    return token;
   }
 }
