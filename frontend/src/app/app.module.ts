@@ -8,7 +8,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 
 
 import { AppComponent } from './app.component';
-import { ImagesComponent } from './components/images/images.component';
+import { CreateImageComponent } from './components/create-image/create-image.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -17,6 +17,7 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ImageDetailsComponent } from './components/image-details/image-details.component';
+import { ImportImageComponent } from './components/import-image/import-image.component';
 
 
 
@@ -28,7 +29,10 @@ const appRoutes: Routes = [
  {path: 'profile', component: ProfileComponent/*, canActivate: [AuthGuard]*/},
  {path: 'collection', component: CollectionComponent/*, canActivate: [AuthGuard]*/},
  {path: 'collection/:id', component: ImageDetailsComponent/*, canActivate: [AuthGuard]*/},
- {path: 'dashboard', component: DashboardComponent/*,  canActivate: [AuthGuard]*/}
+ {path: 'dashboard', component: DashboardComponent/*,  canActivate: [AuthGuard]*/},
+ {path: 'create-image', component: CreateImageComponent/*,  canActivate: [AuthGuard]*/},
+ {path: 'import-image', component: ImportImageComponent/*,  canActivate: [AuthGuard]*/}
+
 
 
 ];
@@ -36,7 +40,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ImagesComponent,
+    CreateImageComponent,
     NavbarComponent,
     LoginComponent,
     ProfileComponent,
@@ -44,7 +48,8 @@ const appRoutes: Routes = [
     CollectionComponent,
     DashboardComponent,
     HomeComponent,
-    ImageDetailsComponent
+    ImageDetailsComponent,
+    ImportImageComponent
   ],
   imports: [
     BrowserModule,

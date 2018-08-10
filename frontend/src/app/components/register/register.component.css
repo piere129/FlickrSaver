@@ -8,6 +8,10 @@
   padding: 50px;
 }
 
+hr {
+  border-color: white;
+}
+
 @media (min-width:0px) and ( max-width: 1080px) {
   .form-container {
     margin-right: 5%;

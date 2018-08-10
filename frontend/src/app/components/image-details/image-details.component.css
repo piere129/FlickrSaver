@@ -25,3 +25,7 @@ img {
     text-decoration: underline;
     cursor: pointer;
   }
+
+  hr {
+    border-color: #4E5D6C;
+}

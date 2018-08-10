@@ -27,7 +27,7 @@ export class ImageDetailsComponent implements OnInit {
     );
   }
 
-  goBackToCollection(){
+  goBackToCollection() {
     this.router.navigate(['/collection']);
   }
 

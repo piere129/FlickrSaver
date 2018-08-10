@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../../services/image/image.service';
 import { Image } from '../../models/image';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-images',
-  templateUrl: './images.component.html',
-  styleUrls: ['./images.component.css']
+  templateUrl: './create-image.component.html',
+  styleUrls: ['./create-image.component.css']
 })
-export class ImagesComponent implements OnInit {
+export class CreateImageComponent implements OnInit {
 
   images: Image[];
   image: Image;
   title: string;
   description: string;
-  url: string;
+  url = 'https://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png';
+  checkImage: boolean;
 
   // dependency injection
-  constructor(private imageService: ImageService) {
+  constructor(private imageService: ImageService, private flashMessagesService: FlashMessagesService, private router: Router) {
   }
 
   deleteImage(id: any) {
@@ -41,13 +44,27 @@ export class ImagesComponent implements OnInit {
     this.imageService.addImage(newImage).subscribe(image => {
       this.images.push(image);
       this.imageService.getImages().subscribe(images => this.images = images);
+      this.router.navigate(['/collection']);
     });
 
   }
 
   ngOnInit() {
     this.imageService.getImages().subscribe(images => this.images = images);
-
   }
 
+  sendResults() {
+
+    if (this.title == null || this.url == null) {
+      this.flashMessagesService.show('Title & Url can not be empty!', { cssClass: 'alert-danger', timeout: 3000 });
+    } else {
+    if (this.title != null && this.url != null) {
+      this.addImage();
+    }
+  }
+  }
+
+  handleError() {
+    this.url = 'https://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png';
+  }
 }
