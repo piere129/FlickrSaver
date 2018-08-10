@@ -6,3 +6,17 @@
     align-content: center;
     padding: 50px;
   }
+
+  .inline {
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+
+  .block {
+    display: block;
+  }
+
+  h2 {
+    margin: 20px;
+  }
