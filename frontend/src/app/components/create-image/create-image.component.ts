@@ -16,7 +16,6 @@ export class CreateImageComponent implements OnInit {
   title: string;
   description: string;
   url = 'https://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png';
-  checkImage: boolean;
 
   // dependency injection
   constructor(private imageService: ImageService, private flashMessagesService: FlashMessagesService, private router: Router) {

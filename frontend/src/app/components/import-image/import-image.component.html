@@ -1,3 +1,21 @@
-<p>
-  import-image works!
-</p>
+<div>
+  <div class="container">
+    <h2> Flickr Image Search</h2>
+    <hr/>
+    <h5> Input a search term, and choose an image to add it to your collection! </h5>
+
+    <form>
+      <label>Tag:</label>
+      <div class="row">
+
+        <div class="col-md-6">
+          <input class="form-control" type="text" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Enter your search term here">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="imageResults">
+
+  </div>
+</div>
