@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="link"  (click) = 'goBackToCollection()' > &larr; Go back</p>
   <h2 *ngIf="image?.title"> {{image.title}}</h2>
   <p *ngIf="image?.description"> {{image.description}}</p>
   <img src={{image?.url}}/>

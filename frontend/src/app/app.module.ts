@@ -25,10 +25,10 @@ const appRoutes: Routes = [
  {path: '', component: HomeComponent},
  {path: 'register', component: RegisterComponent},
  {path: 'login', component: LoginComponent},
- {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+ {path: 'profile', component: ProfileComponent/*, canActivate: [AuthGuard]*/},
  {path: 'collection', component: CollectionComponent/*, canActivate: [AuthGuard]*/},
  {path: 'collection/:id', component: ImageDetailsComponent/*, canActivate: [AuthGuard]*/},
- {path: 'dashboard', component: ImagesComponent,  canActivate: [AuthGuard]}
+ {path: 'dashboard', component: DashboardComponent/*,  canActivate: [AuthGuard]*/}
 
 
 ];
