@@ -3,6 +3,10 @@ import { ImageService } from '../../services/image/image.service';
 import { Image } from '../../models/image';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { FlickrService } from '../../services/flickr/flickr.service';
+import { Convert, RootObject } from '../../models/flickr/flickr';
+//
+//  
 
 @Component({
   selector: 'app-import-image',
@@ -19,7 +23,8 @@ export class ImportImageComponent implements OnInit {
   url = 'https://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png';
 
   // dependency injection
-  constructor(private imageService: ImageService, private flashMessagesService: FlashMessagesService, private router: Router) {
+  constructor(private imageService: ImageService, private flashMessagesService: FlashMessagesService,
+     private router: Router, private flickrService: FlickrService) {
   }
 
   addImage() {
@@ -36,7 +41,21 @@ export class ImportImageComponent implements OnInit {
 
   }
 
+  testUrl() {
+    let json;
+     this.flickrService.testUrl(this.searchTerm).subscribe(response => {
+        json = response.json();
+        this.setText(json);
+    });
+  }
+
   ngOnInit() {
     this.imageService.getImages().subscribe(images => this.images = images);
+  }
+
+  setText(json) {
+    const stringjson = JSON.stringify(json);
+    const rootObject = Convert.toRootObject(stringjson);
+    console.log(rootObject);
   }
 }

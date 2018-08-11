@@ -73,6 +73,7 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 //passing passport authenticate protects the route!
+//must add authorization header in the service, calling the api call!
 router.get('/profile', passport.authenticate('jwt',{session:false}), (req, res, next) => {
     res.json({user: req.user})
 });
