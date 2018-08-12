@@ -15,13 +15,12 @@
       </div>
     </form>
   </div>
-  
+
   <div class="projects">
-    <a *ngFor="let image of images" (click)="saveImage(image)" >
+    <a *ngFor="let image of images" (click)="saveImage(image)">
       <article class="project-wrapper">
         <img src={{image.url}}/>
       </article>
     </a>
   </div>
 </div>
-  

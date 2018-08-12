@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Image } from '../../models/image';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class ImageService {
 
-  constructor(private http: Http ) { }
+  constructor(private http: Http, private authService: AuthService ) { }
 
   // retrieving images
   getImages() {

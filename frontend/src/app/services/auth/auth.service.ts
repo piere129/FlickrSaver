@@ -15,13 +15,13 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.post('http://localhost:3000/auth/register', user, {headers: headers}).pipe(map(res => res.json()));
   }
 
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.post('http://localhost:3000/auth/authenticate', user, {headers: headers}).pipe(map(res => res.json()));
   }
 
   storeUserData(token, user) {
@@ -29,6 +29,11 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+  }
+
+  getUsers() {
+    return this.http.get('http://localhost:3000/auth/').pipe(map(res => res.json()));
+
   }
 
   logout() {
@@ -43,7 +48,6 @@ export class AuthService {
     }
     return false;
   }
-
 
   loadToken() {
     const token = localStorage.getItem('id_token');

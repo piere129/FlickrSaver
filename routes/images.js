@@ -4,7 +4,6 @@ const passport = require('passport');
 
 const Image = require('../models/images');
 
-
 //retrieving data
 router.get('/images', (req,res,next) => {
 

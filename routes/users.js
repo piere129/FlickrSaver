@@ -11,7 +11,8 @@ router.post('/register', (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        images: []
     });
 
     //we could also do newUser.save, but  extra functionality (encryption) is needed, 
@@ -28,10 +29,33 @@ router.post('/register', (req, res, next) => {
 //get users
 router.get('/users',(req,res,next) => {
 
-    User.find( (err, users) => {
+    User.getUsers( (err, users) => {
         res.json(users);
     })
 });
+
+//get 1 user 
+router.get('/user',(req,res,next) => {
+    const username = req.body.username;
+
+    User.getUserByUsername(username, (err,user) => {
+        if(err) throw err;
+        if(!user) 
+        {
+            return res.json({success:false, msg: "User not found"})
+        }
+        res.json({ success: true,
+                user: {
+                    id: user._id,
+                    name: user.name,
+                    username: user.username,
+                    email: user.email, 
+                    images: user.images
+                }
+                });
+
+    })
+})
 
 
 //authenticate
@@ -59,7 +83,8 @@ router.post('/authenticate', (req, res, next) => {
                     id: user._id,
                     name: user.name,
                     username: user.username,
-                    email: user.email
+                    email: user.email, 
+                    images: user.images
                 }
                 });
              }

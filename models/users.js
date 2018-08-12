@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 //const config = require('../models/database');
 
 //user schema
+var Schema = mongoose.Schema;
+
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -10,29 +12,34 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
         required: true
-    }
+    },
+    images: [{type: Schema.Types.ObjectId, ref:'Image'}]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function (id, callback) {
-    User.findById(id, callback);
+    User.findById(id, callback).populate('images');
 }
+
+module.exports.getUsers =  User.find().populate('images');
 
 module.exports.getUserByUsername = function (username, callback) {
     const query = {
         username: username
     };
-    User.findOne(query, callback);
+    User.findOne(query, callback).populate('images');
 }
 
 module.exports.addUser = function (newUser, callback) {

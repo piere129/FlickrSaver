@@ -23,7 +23,7 @@ const users = require('./routes/users');
 
 //routing with /api uses routes defined in route.js
 app.use('/api', apiImage);
-app.use('/users', users)
+app.use('/auth', users)
 
 //port no
 const port = 3000;
