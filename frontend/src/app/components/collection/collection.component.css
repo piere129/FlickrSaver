@@ -56,26 +56,10 @@
     .projects a {
         width: 33%;
     }
-
-    .item-wrapper {
-        margin: 20%;
-    }
-
-    .item-wrapper-form {
-        margin: 25%;
-    }
 }
 
 @media screen and (max-width: 768px) {
     .projects a {
         width: 100%;
-    }
-
-    .item-wrapper {
-        margin: 15%;
-    }
-
-    .item-wrapper-form {
-        margin: 20%;
     }
 }

@@ -28,4 +28,12 @@ export class ValidatorService {
     }
     return false;
   }
+
+  validateLogin(user) {
+    if (user.username === '' || user.password === ''
+      || user.username === undefined || user.password === undefined) {
+        return false;
+      }
+      return true;
+  }
 }

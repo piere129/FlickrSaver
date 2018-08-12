@@ -5,9 +5,9 @@ export class Image {
     description: string;
     url: string;
 
-    constructor(url: string) {
+    constructor(url: string, title: string = 'Default title') {
         this.url = url;
-        this.title = 'lala';
-        this.description = 'this is a description';
+        this.title = title;
+        this.description = 'This is the default description for images';
     }
 }

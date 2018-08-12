@@ -22,46 +22,54 @@ export class ImportImageComponent implements OnInit {
 
   // dependency injection
   constructor(private imageService: ImageService, private flashMessagesService: FlashMessagesService,
-     private router: Router, private flickrService: FlickrService) {
+    private router: Router, private flickrService: FlickrService) {
   }
 
-  addImage() {
-    const newImage = {
-      title: this.title,
-      description: this.description,
-      url: this.url
-    };
-    this.imageService.addImage(newImage).subscribe(image => {
-      this.images.push(image);
-      this.imageService.getImages().subscribe(images => this.images = images);
-      this.router.navigate(['/collection']);
+  addImage(image?) {
+
+    let newImage;
+
+    if (image === null || image === undefined) {
+      newImage = {
+        title: this.title,
+        description: this.description,
+        url: this.url
+      };
+    } else {
+      newImage = image;
+    }
+    this.imageService.addImage(newImage).subscribe(data => {
+      this.imageService.getImages().subscribe(images => images);
     });
-
   }
 
-  testUrl() {
+  getJsonFromFlickr() {
     let json;
-     this.flickrService.testUrl(this.searchTerm).subscribe(response => {
-        json = response.json();
-        this.setText(json);
+    this.flickrService.testUrl(this.searchTerm).subscribe(response => {
+      json = response.json();
+      this.getImages(json);
     });
+  }
+
+  saveImage(image) {
+    this.addImage(image);
+    this.flashMessagesService.show('The image has been added to your collection!', { cssClass: 'alert-success', timeout: 3000 });
   }
 
   ngOnInit() {
   }
 
-  setText(json) {
+  getImages(json) {
     const stringjson = JSON.stringify(json);
     const rootObject = Convert.toRootObject(stringjson);
-    console.log(rootObject);
     this.images = [];
 
-    if ( rootObject.stat === 'ok') {
-      for ( const photo of rootObject.photos.photo ) {
+    if (rootObject.stat === 'ok') {
+      for (const photo of rootObject.photos.photo) {
         // http://farm{farmid}.staticflickr.com/{server-id}/{id}_{secret}{size}.jpg
-         const photoUrl = 'http://farm' + photo.farm + '.staticflickr.com/' + photo.server
-         + '/' + photo.id + '_' + photo.secret + '_n.jpg';
-        this.images.push(new Image(photoUrl));
+        const photoUrl = 'http://farm' + photo.farm + '.staticflickr.com/' + photo.server
+          + '/' + photo.id + '_' + photo.secret + '_n.jpg';
+        this.images.push(new Image(photoUrl, photo.title));
       }
     }
   }
