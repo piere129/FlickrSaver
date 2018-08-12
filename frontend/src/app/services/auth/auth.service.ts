@@ -10,7 +10,7 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {  }
 
   registerUser(user) {
     const headers = new Headers();
@@ -27,12 +27,13 @@ export class AuthService {
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
+    console.log(user);
     this.authToken = token;
     this.user = user;
   }
 
   getUsers() {
-    return this.http.get('http://localhost:3000/auth/').pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/auth/users').pipe(map(res => res.json()));
 
   }
 

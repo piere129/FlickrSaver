@@ -4,5 +4,8 @@
   <p *ngIf="image?.description"> {{image.description}}</p>
   <img src={{image?.url}}/>
   <br> <br>
-  <button class="btn btn-danger" (click)="onDelete()">delete</button>
+  <span>
+  <button class="btn btn-primary" (click)="onUpdate()"> Edit</button>
+  <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+</span>
 </div>

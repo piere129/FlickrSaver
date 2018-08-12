@@ -5,32 +5,34 @@ const passport = require('passport');
 const Image = require('../models/images');
 
 //retrieving data
-router.get('/images', (req,res,next) => {
+router.get('/:userid/images', (req,res,next) => {
 
-    Image.find( (err, images) => {
+    Image.find({user:req.params.userid}, (err, images) => {
         res.json(images);
     })
-
 });
 
-router.get('/image/:id', (req,res,next) => {
+router.get('/:userid/image/:id', (req,res,next) => {
 
     Image.findOne({
         _id: req.params.id,
+        user: req.params.userid
     }, (err, images) => {
         res.json(images);
     });
 });
 
 //add image
-router.post('/image',(req,res,next) => {
+router.post('/:userid/image',(req,res,next) => {
 
     console.log(req.body);
     let newImage = new Image({
         title: req.body.title,
         description: req.body.description,
-        url: req.body.url
+        url: req.body.url,
+        user: req.params.userid
     });
+
 
     newImage.save((err, image)=> {
         if(err)

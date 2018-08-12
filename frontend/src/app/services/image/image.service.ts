@@ -14,18 +14,19 @@ export class ImageService {
 
   // retrieving images
   getImages() {
-    return this.http.get('http://localhost:3000/api/images').pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/api/' + this.authService.user.id + '/images').pipe(map(res => res.json()));
   }
 
   getImage(id) {
-    return this.http.get('http://localhost:3000/api/image/' + id).pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/api/' + this.authService.user.id + '/image/' + id).pipe(map(res => res.json()));
   }
 
   // adding an image
   addImage(newImage) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/api/image', newImage, { headers: headers }).pipe(map(res => res.json()));
+    return this.http.post('http://localhost:3000/api/' + this.authService.user.id + '/image', newImage,
+     { headers: headers }).pipe(map(res => res.json()));
   }
 
   // deleting an image

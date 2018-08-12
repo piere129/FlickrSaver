@@ -18,3 +18,8 @@ button {
 hr {
     border-color: grey;
 }
+
+img { 
+    width: 300px;
+    height: 300px;
+}

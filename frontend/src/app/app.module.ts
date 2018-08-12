@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ImageDetailsComponent } from './components/image-details/image-details.component';
 import { ImportImageComponent } from './components/import-image/import-image.component';
+import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 
 
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     HomeComponent,
     ImageDetailsComponent,
-    ImportImageComponent
+    ImportImageComponent,
+    EditImageComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,6 @@ export class ImageDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.imageService.getImage(id).subscribe(image => this.image = image);
   }
 
@@ -25,6 +24,10 @@ export class ImageDetailsComponent implements OnInit {
       this.imageService.getImages().subscribe(images => this.router.navigate(['/collection']));
     }
     );
+  }
+
+  onUpdate() {
+    this.router.navigate(['/edit-image/' + this.image._id]);
   }
 
   goBackToCollection() {
