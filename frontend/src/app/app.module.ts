@@ -32,10 +32,8 @@ const appRoutes: Routes = [
  {path: 'collection/:id', component: ImageDetailsComponent/*, canActivate: [AuthGuard]*/},
  {path: 'dashboard', component: DashboardComponent/*,  canActivate: [AuthGuard]*/},
  {path: 'create-image', component: CreateImageComponent/*,  canActivate: [AuthGuard]*/},
- {path: 'import-image', component: ImportImageComponent/*,  canActivate: [AuthGuard]*/}
-
-
-
+ {path: 'import-image', component: ImportImageComponent/*,  canActivate: [AuthGuard]*/},
+ {path: 'edit-image/:id', component: EditImageComponent /*,  canActivate: [AuthGuard]*/}
 ];
 
 @NgModule({

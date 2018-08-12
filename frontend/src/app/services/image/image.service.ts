@@ -29,6 +29,13 @@ export class ImageService {
      { headers: headers }).pipe(map(res => res.json()));
   }
 
+  updateImage(editedImage) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/api/' + this.authService.user.id + '/image', editedImage,
+     { headers: headers }).pipe(map(res => res.json()));
+  }
+
   // deleting an image
   deleteImage(id) {
     return this.http.delete('http://localhost:3000/api/image/' + id).pipe(map(res => res.json()));

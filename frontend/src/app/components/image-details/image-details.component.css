@@ -29,3 +29,7 @@ img {
   hr {
     border-color: #4E5D6C;
 }
+
+span button { 
+  margin-right: 10px;
+}

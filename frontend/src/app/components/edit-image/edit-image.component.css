@@ -1,0 +1,26 @@
+
+.container {
+    margin-top: 5%;
+    width: 80%;
+    background-color: #4E5D6C;
+    padding: 50px;
+  }
+  
+  .col-md-6 {
+      align-content: center;
+      text-align: center;
+  }
+  
+  button {
+      margin-left: 20px;
+  }
+  
+  hr {
+      border-color: grey;
+  }
+  
+  img { 
+      width: 300px;
+      height: 300px;
+  }
+  

@@ -25,7 +25,6 @@ router.get('/:userid/image/:id', (req,res,next) => {
 //add image
 router.post('/:userid/image',(req,res,next) => {
 
-    console.log(req.body);
     let newImage = new Image({
         title: req.body.title,
         description: req.body.description,
@@ -42,6 +41,31 @@ router.post('/:userid/image',(req,res,next) => {
         else
         {
             res.json("Image added"); 
+        }
+    })
+});
+
+//add image
+router.put('/:userid/image',(req,res,next) => {
+
+    let updatedImage = new Image({
+        _id: req.body._id,
+        title: req.body.title,
+        description: req.body.description,
+        url: req.body.url,
+        user: req.params.userid
+    });
+
+    console.log(updatedImage);
+
+     Image.findByIdAndUpdate(req.body._id, updatedImage, {new: true}, (err, image)=> {
+        if(err)
+        {
+            res.json("Failed to update image");
+        }
+        else
+        {
+            res.json("Image updated"); 
         }
     })
 });
