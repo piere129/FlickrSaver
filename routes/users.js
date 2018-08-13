@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/users');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
+const config = require('../config/secret');
 
 //register route
 router.post('/register', (req, res, next) => {
@@ -19,40 +19,49 @@ router.post('/register', (req, res, next) => {
     //so it routes to the User model to call addUser function
     User.addUser(newUser, (err, user) => {
         if (err) {
-            res.json({success: false, msg: 'Failed to register User'});
+            res.json({
+                success: false,
+                msg: 'Failed to register User'
+            });
         } else {
-            res.json({success: true, msg: "User registered"});
+            res.json({
+                success: true,
+                msg: "User registered"
+            });
         }
     });
 });
 
 //get users
-router.get('/users',(req,res,next) => {
+router.get('/users', (req, res, next) => {
 
-    User.getUsers( (err, users) => {
+    User.getUsers((err, users) => {
         res.json(users);
     })
 });
 
 //get 1 user 
-router.get('/user',(req,res,next) => {
+router.get('/user', (req, res, next) => {
     const username = req.body.username;
 
-    User.getUserByUsername(username, (err,user) => {
-        if(err) throw err;
-        if(!user) 
-        {
-            return res.json({success:false, msg: "User not found"})
+    User.getUserByUsername(username, (err, user) => {
+        if (err) throw err;
+        if (!user) {
+            return res.json({
+                success: false,
+                msg: "User not found"
+            })
         }
-        res.json({ success: true,
-                user: {
-                    id: user._id,
-                    name: user.name,
-                    username: user.username,
-                    email: user.email, 
-                    images: user.images
-                }
-                });
+        res.json({
+            success: true,
+            user: {
+                id: user._id,
+                name: user.name,
+                username: user.username,
+                email: user.email,
+                images: user.images
+            }
+        });
 
     })
 })
@@ -63,44 +72,56 @@ router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    User.getUserByUsername(username, (err,user) => {
-        if(err) throw err;
-        if(!user) 
-        {
-            return res.json({success:false, msg: "User not found"})
+    User.getUserByUsername(username, (err, user) => {
+        if (err) throw err;
+        if (!user) {
+            return res.json({
+                success: false,
+                msg: "User not found"
+            })
         }
 
         User.comparePassword(password, user.password, (err, isMatch) => {
-             if(err) throw err;
-             if(isMatch){
-                const token = jwt.sign({data: user}, config.secret, {
+            if (err) throw err;
+            if (isMatch) {
+                const token = jwt.sign({
+                    data: user
+                }, config.secret, {
                     expiresIn: 604800
-                   });
-                
-                //return everything except the password
-                res.json({ success: true, token: 'JWT ' + token, 
-                user: {
-                    id: user._id,
-                    name: user.name,
-                    username: user.username,
-                    email: user.email, 
-                    images: user.images
-                }
                 });
-             }
-             //if no match
-             else
-             {
-                return res.json({success:false, msg: "Wrong password"});
-             }
+
+                //return everything except the password
+                res.json({
+                    success: true,
+                    token: 'JWT ' + token,
+                    user: {
+                        id: user._id,
+                        name: user.name,
+                        username: user.username,
+                        email: user.email,
+                        images: user.images
+                    }
+                });
+            }
+            //if no match
+            else {
+                return res.json({
+                    success: false,
+                    msg: "Wrong password"
+                });
+            }
         });
     })
 });
 
 //passing passport authenticate protects the route!
 //must add authorization header in the service, calling the api call!
-router.get('/profile', passport.authenticate('jwt',{session:false}), (req, res, next) => {
-    res.json({user: req.user})
+router.get('/profile', passport.authenticate('jwt', {
+    session: false
+}), (req, res, next) => {
+    res.json({
+        user: req.user
+    })
 });
 
 module.exports = router;

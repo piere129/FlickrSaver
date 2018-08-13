@@ -23,17 +23,17 @@ import { EditImageComponent } from './components/edit-image/edit-image.component
 
 
 const appRoutes: Routes = [
-  {path: '*', component: LoginComponent},
- {path: '', component: HomeComponent},
- {path: 'register', component: RegisterComponent},
- {path: 'login', component: LoginComponent},
- {path: 'profile', component: ProfileComponent/*, canActivate: [AuthGuard]*/},
- {path: 'collection', component: CollectionComponent/*, canActivate: [AuthGuard]*/},
- {path: 'collection/:id', component: ImageDetailsComponent/*, canActivate: [AuthGuard]*/},
- {path: 'dashboard', component: DashboardComponent/*,  canActivate: [AuthGuard]*/},
- {path: 'create-image', component: CreateImageComponent/*,  canActivate: [AuthGuard]*/},
- {path: 'import-image', component: ImportImageComponent/*,  canActivate: [AuthGuard]*/},
- {path: 'edit-image/:id', component: EditImageComponent /*,  canActivate: [AuthGuard]*/}
+  { path: '*', component: LoginComponent },
+  { path: '', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'collection', component: CollectionComponent, canActivate: [AuthGuard] },
+  { path: 'collection/:id', component: ImageDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'create-image', component: CreateImageComponent, canActivate: [AuthGuard] },
+  { path: 'import-image', component: ImportImageComponent, canActivate: [AuthGuard] },
+  { path: 'edit-image/:id', component: EditImageComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

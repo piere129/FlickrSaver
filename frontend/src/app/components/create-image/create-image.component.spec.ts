@@ -1,25 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateImageComponent } from './create-image.component';
+import { FormsModule } from '@angular/forms';
+
 
 describe('CreateImageComponent', () => {
-  let component: CreateImageComponent;
-  let fixture: ComponentFixture<CreateImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateImageComponent ]
+      declarations: [CreateImageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateImageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      declarations: [
+        CreateImageComponent
+      ],
+      imports: [FormsModule]
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
+
 });

@@ -43,6 +43,7 @@ export class CreateImageComponent implements OnInit {
     this.imageService.addImage(newImage).subscribe(image => {
       this.images.push(image);
       this.imageService.getImages().subscribe(images => this.images = images);
+      this.flashMessagesService.show(newImage.title + ' has been added!', { cssClass: 'alert-success', timeout: 3000 });
       this.router.navigate(['/collection']);
     });
 
@@ -57,10 +58,10 @@ export class CreateImageComponent implements OnInit {
     if (this.title == null || this.url == null) {
       this.flashMessagesService.show('Title & Url can not be empty!', { cssClass: 'alert-danger', timeout: 3000 });
     } else {
-    if (this.title != null && this.url != null) {
-      this.addImage();
+      if (this.title != null && this.url != null) {
+        this.addImage();
+      }
     }
-  }
   }
 
   handleError() {

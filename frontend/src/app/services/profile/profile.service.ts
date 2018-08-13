@@ -14,6 +14,6 @@ export class ProfileService {
     const authToken = this.authService.loadToken();
     headers.append('Authorization', authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/auth/profile', {headers: headers}).pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/auth/profile', { headers: headers }).pipe(map(res => res.json()));
   }
 }

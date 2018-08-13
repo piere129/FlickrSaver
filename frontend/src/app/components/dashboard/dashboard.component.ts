@@ -9,7 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private router: Router, private flashMessagesService: FlashMessagesService) { }
+  constructor(private router: Router, private flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToFlickr() {
-   this.router.navigate(['/import-image']);
+    this.router.navigate(['/import-image']);
   }
 
 }

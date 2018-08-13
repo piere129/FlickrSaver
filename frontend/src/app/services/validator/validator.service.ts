@@ -32,8 +32,8 @@ export class ValidatorService {
   validateLogin(user) {
     if (user.username === '' || user.password === ''
       || user.username === undefined || user.password === undefined) {
-        return false;
-      }
-      return true;
+      return false;
+    }
+    return true;
   }
 }

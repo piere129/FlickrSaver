@@ -8,8 +8,4 @@ describe('ProfileService', () => {
       providers: [ProfileService]
     });
   });
-
-  it('should be created', inject([ProfileService], (service: ProfileService) => {
-    expect(service).toBeTruthy();
-  }));
 });

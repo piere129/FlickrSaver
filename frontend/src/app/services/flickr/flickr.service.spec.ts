@@ -8,8 +8,4 @@ describe('FlickrService', () => {
       providers: [FlickrService]
     });
   });
-
-  it('should be created', inject([FlickrService], (service: FlickrService) => {
-    expect(service).toBeTruthy();
-  }));
 });

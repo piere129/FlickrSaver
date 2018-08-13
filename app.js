@@ -13,9 +13,9 @@ var app = express();
 //bodyparser
 app.use(bodyparser.urlencoded({
     extended: true
-  }));
+}));
 
-  app.use(bodyparser.json())
+app.use(bodyparser.json())
 
 //routing
 const apiImage = require('./routes/images');
@@ -29,13 +29,14 @@ app.use('/auth', users)
 const port = 3000;
 
 //connection to mongodb
-mongoose.connect(config.database, {useNewUrlParser:true});
-mongoose.connection.on('connected', ()=>{
+mongoose.connect(config.database, {
+    useNewUrlParser: true
+});
+mongoose.connection.on('connected', () => {
     console.log('Connected to database mongodb @ 27017');
 })
-mongoose.connection.on('error', (err)=>{
-    if(err)
-    {
+mongoose.connection.on('error', (err) => {
+    if (err) {
         console.log("Error in database" + err);
     }
 })
@@ -50,10 +51,10 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 //initialise static files in public
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //testing server
-app.get('/',(req,res) => {
+app.get('/', (req, res) => {
     res.send('test');
 })
 

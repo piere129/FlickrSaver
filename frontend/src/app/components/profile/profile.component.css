@@ -1,26 +1,26 @@
 .profile-container {
-    margin-right: 35%;
-    margin-left: 35%;
-    margin-top: 5%;
-    background-color: #4E5D6C;
-    align-content: center;
-    padding: 50px;
-  }
+  margin-right: 35%;
+  margin-left: 35%;
+  margin-top: 5%;
+  background-color: #4E5D6C;
+  align-content: center;
+  padding: 50px;
+}
 
-  .inline {
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 15px;
-  }
+.inline {
+  display: inline-block;
+  margin-top: 15px;
+  margin-left: 15px;
+}
 
-  .block {
-    display: block;
-  }
+.block {
+  display: block;
+}
 
-  h2 {
-    margin: 20px;
-  }
+h2 {
+  margin: 20px;
+}
 
-  hr {
-    border-color: white;
+hr {
+  border-color: white;
 }

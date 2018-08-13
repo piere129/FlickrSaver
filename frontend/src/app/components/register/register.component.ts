@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   confirmPassword: String;
 
   constructor(private validatorService: ValidatorService, private flashMessagesService: FlashMessagesService,
-     private authService: AuthService, private router: Router) { }
+    private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,13 +32,13 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.confirmPassword
     };
 
-    if ( !this.validatorService.validateRegister(user)) {
-      this.flashMessagesService.show('Please fill in all fields!', {cssClass: 'alert-danger', timeout: 3000});
+    if (!this.validatorService.validateRegister(user)) {
+      this.flashMessagesService.show('Please fill in all fields!', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
 
-    if ( !this.validatorService.validateEmail(user.email)) {
-      this.flashMessagesService.show('Please use a valid email!', {cssClass: 'alert-danger', timeout: 3000});
+    if (!this.validatorService.validateEmail(user.email)) {
+      this.flashMessagesService.show('Please use a valid email!', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
 
@@ -47,11 +47,12 @@ export class RegisterComponent implements OnInit {
     }
     // Register a user
     this.authService.registerUser(user).subscribe(data => {
+      console.log(data);
       if (data.success) {
-        this.flashMessagesService.show('You are now registered!', {cssClass: 'alert-success', timeout: 3000});
+        this.flashMessagesService.show('You are now registered!', { cssClass: 'alert-success', timeout: 3000 });
         this.router.navigate(['/login']);
       } else {
-        this.flashMessagesService.show('Error registering user', {cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessagesService.show('Error registering user', { cssClass: 'alert-danger', timeout: 3000 });
 
       }
     });

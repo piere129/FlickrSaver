@@ -109,7 +109,7 @@ export namespace Convert {
             return result;
         }
 
-        if (typ === 'any') {return val; }
+        if (typ === 'any') { return val; }
         if (typ === null) {
             if (val === null) { return val; }
             return invalidValue(typ, val);
@@ -118,7 +118,7 @@ export namespace Convert {
         while (typeof typ === 'object' && typ.ref !== undefined) {
             typ = typeMap[typ.ref];
         }
-        if (Array.isArray(typ)) {return transformEnum(typ, val); }
+        if (Array.isArray(typ)) { return transformEnum(typ, val); }
         if (typeof typ === 'object') {
             return typ.hasOwnProperty('unionMembers') ? transformUnion(typ.unionMembers, val)
                 : typ.hasOwnProperty('arrayItems') ? transformArray(typ.arrayItems, val)

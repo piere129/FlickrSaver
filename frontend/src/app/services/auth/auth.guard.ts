@@ -11,14 +11,14 @@ export class AuthGuard implements CanActivate {
 
   constructor(private router: Router, private authService: AuthService, private flashMessagesService: FlashMessagesService) { }
 
-  canActivate()  {
-      if ( this.authService.isLoggedIn()) {
-        return true;
-      } else {
-          this.router.navigate(['/login']);
-          this.flashMessagesService.show('You are not authorized to access this page, please log in!',
-           {cssClass: 'alert-danger', timeout: 3000});
-          return false;
-      }
+  canActivate() {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      this.flashMessagesService.show('You are not authorized to access this page, please log in!',
+        { cssClass: 'alert-danger', timeout: 3000 });
+      return false;
+    }
   }
 }

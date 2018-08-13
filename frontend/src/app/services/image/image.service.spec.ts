@@ -8,8 +8,4 @@ describe('ImageService', () => {
       providers: [ImageService]
     });
   });
-
-  it('should be created', inject([ImageService], (service: ImageService) => {
-    expect(service).toBeTruthy();
-  }));
 });

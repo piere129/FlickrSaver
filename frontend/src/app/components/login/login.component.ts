@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
 
-      if (!this.validatorService.validateLogin(user)) {
+    if (!this.validatorService.validateLogin(user)) {
       this.flashMessagesService.show('Please enter your username and password!', { cssClass: 'alert-danger', timeout: 3000 });
 
     } else {
