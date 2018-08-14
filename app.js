@@ -11,7 +11,7 @@ var passport = require('passport');
 var app = express();
 
 //initialise static files in public
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 //bodyparser
 app.use(bodyparser.urlencoded({
