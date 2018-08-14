@@ -1,12 +1,12 @@
 //importing modules
-
+var dotenv = require('dotenv').config()
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
-var config = require('./config/database');
 var passport = require('passport');
+
 
 var app = express();
 
@@ -29,7 +29,7 @@ app.use('/auth', users)
 const port = 3000;
 
 //connection to mongodb
-mongoose.connect(config.database, {
+mongoose.connect(process.env.database, {
     useNewUrlParser: true
 });
 mongoose.connection.on('connected', () => {

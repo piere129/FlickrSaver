@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 const passport = require('passport');
+require('dotenv').config()
 const jwt = require('jsonwebtoken');
-const config = require('../config/secret');
 
 //register route
 router.post('/register', (req, res, next) => {
@@ -86,7 +86,7 @@ router.post('/authenticate', (req, res, next) => {
             if (isMatch) {
                 const token = jwt.sign({
                     data: user
-                }, config.secret, {
+                }, process.env.secret, {
                     expiresIn: 604800
                 });
 
