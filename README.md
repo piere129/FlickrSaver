@@ -27,7 +27,7 @@ database: <<enter mongodb link here>>
 secret: <<your personal authentication secret, DO NOT SHARE THIS!>>
 ```
 
-4) run the app:
+4) Install dependencies run the app:
 * in root folder: 
 ```
 npm install
