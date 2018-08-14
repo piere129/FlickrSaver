@@ -14,11 +14,11 @@ export class ImageService {
 
   // retrieving images
   getImages() {
-    return this.http.get('http://localhost:3000/api/' + this.authService.user.id + '/images').pipe(map(res => res.json()));
+    return this.http.get('api/' + this.authService.user.id + '/images').pipe(map(res => res.json()));
   }
 
   getImage(id) {
-    return this.http.get('http://localhost:3000/api/' + this.authService.user.id + '/image/' + id).pipe(map(res => res.json()));
+    return this.http.get('api/' + this.authService.user.id + '/image/' + id).pipe(map(res => res.json()));
   }
 
   // adding an image
@@ -26,7 +26,7 @@ export class ImageService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.authToken);
-    return this.http.post('http://localhost:3000/api/' + this.authService.user.id + '/image', newImage,
+    return this.http.post('api/' + this.authService.user.id + '/image', newImage,
       { headers: headers }).pipe(map(res => res.json()));
   }
 
@@ -34,7 +34,7 @@ export class ImageService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.authToken);
-    return this.http.put('http://localhost:3000/api/' + this.authService.user.id + '/image', editedImage,
+    return this.http.put('api/' + this.authService.user.id + '/image', editedImage,
       { headers: headers }).pipe(map(res => res.json()));
   }
 
@@ -42,7 +42,7 @@ export class ImageService {
   deleteImage(id) {
     const headers = new Headers();
     headers.append('Authorization', this.authService.authToken);
-    return this.http.delete('http://localhost:3000/api/image/' + id, { headers: headers }).pipe(map(res => res.json()));
+    return this.http.delete('api/image/' + id, { headers: headers }).pipe(map(res => res.json()));
   }
 }
 
