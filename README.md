@@ -30,9 +30,11 @@ secret: <<your personal authentication secret, DO NOT SHARE THIS!>>
 4) run the app:
 * in root folder: 
 ```
+npm install
 node app.js
 ```
 * in frontend folder: 
 ```
+npm install
 ng serve
 ```
