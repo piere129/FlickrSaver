@@ -25,9 +25,6 @@ const users = require('./routes/users');
 app.use('/api', apiImage);
 app.use('/auth', users)
 
-//port no
-const port = process.env.PORT || 3000;
-
 //connection to mongodb
 mongoose.connect(process.env.database, {
     useNewUrlParser: true
@@ -59,6 +56,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('server started at port ' + port);
 })
