@@ -10,6 +10,9 @@ var passport = require('passport');
 
 var app = express();
 
+//initialise static files in public
+app.use(express.static(path.join(__dirname, 'public')));
+
 //bodyparser
 app.use(bodyparser.urlencoded({
     extended: true
@@ -46,9 +49,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport')(passport);
-
-//initialise static files in public
-app.use(express.static(path.join(__dirname, 'public')));
 
 //testing server
 app.get('/', (req, res) => {
