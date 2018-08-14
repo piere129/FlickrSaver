@@ -4,7 +4,8 @@
   "description": "A web-app allowing Users to import photos from Flickr and save them in a gallery",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Pieter Desseyn",
   "license": "ISC",
