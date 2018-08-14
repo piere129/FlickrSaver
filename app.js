@@ -6,12 +6,7 @@ var bodyparser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
 var passport = require('passport');
-
-
 var app = express();
-
-//initialise static files in public
-app.use(express.static('public'));
 
 //bodyparser
 app.use(bodyparser.urlencoded({
@@ -50,9 +45,12 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
-//testing server
-app.get('/', (req, res) => {
-    res.send('test');
-})
+//initialise static files in public
+app.use(express.static(path.join(__dirname, 'frontend/dist/frontend')));
+
+
+app.all('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'frontend/dist/frontend/index.html'));
+});
 
 app.listen(process.env.PORT || 3000);
