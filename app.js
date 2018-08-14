@@ -26,7 +26,7 @@ app.use('/api', apiImage);
 app.use('/auth', users)
 
 //port no
-const port = process.env.port || 8080;
+const port = 3000;
 
 //connection to mongodb
 mongoose.connect(process.env.database, {
