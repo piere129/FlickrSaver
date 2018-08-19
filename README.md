@@ -16,7 +16,6 @@ git clone https://github.com/piere129/FlickrSaver.git && cd FlickrSaver
 
 2) in the root of the repository: 
 ```
-npm install
 touch .env
 ```
 
