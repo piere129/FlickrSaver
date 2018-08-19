@@ -23,8 +23,8 @@ touch .env
 3) open the .env file using a text editor and enter the following values:
 
 ```
-database: <<enter mongodb link here>>
-secret: <<your personal authentication secret, DO NOT SHARE THIS!>>
+database= <<enter mongodb link here>>
+secret= <<your personal authentication secret, DO NOT SHARE THIS!>>
 ```
 
 4) Install dependencies run the app:
